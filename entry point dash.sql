@@ -41,7 +41,8 @@ case
   when lower(last_touch_feature_desc) like '%showtime%' then 'Showtime Hub'
   when lower(last_touch_feature_desc) like '%thematic%' then 'Thematic Hub'
   else last_touch_feature_desc end last_touch,
-"includes everything" flag,
+"Includes All Features" flag,
+"Overal Streams" stream_type,
 sum(video_playback_ind) streams #updated to align with product
 
 FROM `ent_vw.ctd_path_summary_day` a join stage1_originals b on a.reporting_series_nm = b.title
@@ -66,7 +67,8 @@ select
 day_dt,
 reporting_series_nm,
 'End Card(excludes end of episodes)' last_touch,
-"excludes some" flag,
+"Excludes End Card - End of Episode, Content Page - Episodes, Homepage Carousel - Keep Watching" flag,
+"Overal Streams" stream_type,
 sum(video_playback_ind) streams #updated to align with product
 from `ent_vw.ctd_path_summary_day` a join stage1_originals b on a.reporting_series_nm = b.title
 where day_dt between '2022-01-01' and current_date()
@@ -105,7 +107,8 @@ case when lower(last_touch_feature_desc) like '%homepage%carousel%' then 'Homepa
        when lower(last_touch_feature_desc) like '%showtime%' then 'Showtime Hub'
        when lower(last_touch_feature_desc) like '%thematic%' then 'Thematic Hub'
 else last_touch_feature_desc end last_touch,
-"excludes some" flag,
+"Excludes End Card - End of Episode, Content Page - Episodes, Homepage Carousel - Keep Watching" flag,
+"Overal Streams" stream_type,
 sum(video_playback_ind) streams #updated to align with product
 
 FROM `ent_vw.ctd_path_summary_day` a join stage1_originals b on a.reporting_series_nm = b.title
@@ -142,7 +145,8 @@ case
   when lower(last_touch_feature_desc) like '%showtime%' then 'Showtime Hub'
   when lower(last_touch_feature_desc) like '%thematic%' then 'Thematic Hub'
   else last_touch_feature_desc end last_touch,
-"includes everything" flag,
+"Includes All Features" flag,
+"Overal Streams" stream_type,
 sum(video_playback_ind) streams #updated to align with product
 
 FROM `ent_vw.ctd_path_summary_day` a 
@@ -167,7 +171,8 @@ select
 day_dt,
 "P+ Overall" as reporting_series_nm,
 'End Card(excludes end of episodes)' last_touch,
-"excludes some" flag,
+"Excludes End Card - End of Episode, Content Page - Episodes, Homepage Carousel - Keep Watching" flag,
+"Overal Streams" stream_type,
 sum(video_playback_ind) streams #updated to align with product
 from `ent_vw.ctd_path_summary_day` a 
 where day_dt between '2022-01-01' and current_date()
@@ -206,7 +211,8 @@ case when lower(last_touch_feature_desc) like '%homepage%carousel%' then 'Homepa
        when lower(last_touch_feature_desc) like '%showtime%' then 'Showtime Hub'
        when lower(last_touch_feature_desc) like '%thematic%' then 'Thematic Hub'
 else last_touch_feature_desc end last_touch,
-"excludes some" flag,
+"Excludes End Card - End of Episode, Content Page - Episodes, Homepage Carousel - Keep Watching" flag,
+"Overal Streams" stream_type,
 sum(video_playback_ind) streams #updated to align with product
 
 FROM `ent_vw.ctd_path_summary_day` a 
